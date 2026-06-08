@@ -111,6 +111,10 @@ a{color:inherit;}
 .nav-right{display:flex;align-items:center;gap:14px;}
 .nav-cta{padding:11px 18px;font-size:11px;}
 .nav-burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;}
+.lang-toggle{background:none;border:1px solid var(--line-2);border-radius:4px;color:var(--soft);cursor:pointer;display:flex;align-items:center;gap:2px;padding:5px 9px;font:600 11px/1 var(--f-mono);letter-spacing:.06em;transition:border-color .2s,color .2s;}
+.lang-toggle:hover{border-color:var(--indigo-1);color:var(--ink);}
+.lang-toggle .active{color:var(--indigo-1);}
+.lang-toggle .sep{opacity:.35;margin:0 1px;}
 .nav-burger span{width:22px;height:2px;background:var(--ink);display:block;transition:.25s;}
 .nav-sheet{display:none;flex-direction:column;padding:14px var(--gut) 26px;background:rgba(7,8,16,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);}
 .nav-sheet a{padding:15px 0;color:var(--soft);text-decoration:none;font-family:var(--f-mono);font-size:14px;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--line);}

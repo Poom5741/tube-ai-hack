@@ -1,5 +1,6 @@
 /* effects.jsx — generative-UI primitives (v2) */
 import React, { useState, useEffect, useRef } from "react";
+import { useLang } from "../i18n.jsx";
 
 export function useInView(opts) {
   const ref = useRef(null);
@@ -82,14 +83,17 @@ export function Counter({ value, dur = 1500, prefix = "", suffix = "", className
 }
 
 /* Module heading — eyebrow + ghost numeral + decoding title */
-export function Mod({ no, tag, title, thai }) {
+export function Mod({ no, tag, title, thai, tagTh, titleTh }) {
+  const { lang } = useLang();
+  const displayTag = lang === "th" && tagTh ? tagTh : tag;
+  const displayTitle = lang === "th" && titleTh ? titleTh : title;
   return (
     <div className="mod">
       {no ? <span className="mod-ghost" aria-hidden="true">{no}</span> : null}
       <div className="mod-inner">
-        <Reveal><span className="mod-tag">{tag}</span></Reveal>
-        <Reveal delay={1}><DecodeText as="h2" className="mod-title" text={title} /></Reveal>
-        {thai ? <Reveal delay={2}><p className="mod-th thai">{thai}</p></Reveal> : null}
+        <Reveal><span className="mod-tag">{displayTag}</span></Reveal>
+        <Reveal delay={1}><DecodeText key={lang + displayTitle} as="h2" className="mod-title" text={displayTitle} /></Reveal>
+        {lang === "en" && thai ? <Reveal delay={2}><p className="mod-th thai">{thai}</p></Reveal> : null}
       </div>
     </div>
   );
